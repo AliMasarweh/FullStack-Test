@@ -2,9 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 class App extends React.Component {
-  // constructor(props){
-  //     super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      hobbies: ["Drawing", "Writing", "Surfing", "Eating", "Coding"]
+    };
+  }
 
   render() {
     return (
