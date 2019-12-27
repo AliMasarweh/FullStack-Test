@@ -19,10 +19,8 @@ class App extends React.Component {
         rightSide: [value].concat(this.state.rightSide)
       });
     } else {
-      this.state.rightSide = this.state.rightSide.filter(
-        hobby => hobby !== value
-      );
       this.setState({
+        rightSide: this.state.rightSide.filter(hobby => hobby !== value),
         hobbies: [value].concat(this.state.hobbies)
       });
     }
