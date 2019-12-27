@@ -14,8 +14,8 @@ class App extends React.Component {
 
   moveTo = (value, side) => {
     if (side === "right") {
-      this.state.hobbies = this.state.hobbies.filter(hobby => hobby !== value);
       this.setState({
+        hobbies: this.state.hobbies.filter(hobby => hobby !== value),
         rightSide: [value].concat(this.state.rightSide)
       });
     } else {
