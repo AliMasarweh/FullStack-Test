@@ -6,10 +6,27 @@ class App extends React.Component {
     super(props);
     this.state = {
       hobbies: ["Drawing", "Writing", "Surfing", "Eating", "Coding"],
+      rightSide: [],
       input: "",
       errors: []
     };
   }
+
+  moveTo = (value, side) => {
+    if (side === "right") {
+      this.state.hobbies = this.state.hobbies.filter(hobby => hobby !== value);
+      this.setState({
+        rightSide: [value].concat(this.state.rightSide)
+      });
+    } else {
+      this.state.rightSide = this.state.rightSide.filter(
+        hobby => hobby !== value
+      );
+      this.setState({
+        hobbies: [value].concat(this.state.hobbies)
+      });
+    }
+  };
 
   render() {
     return (
@@ -17,10 +34,14 @@ class App extends React.Component {
         <div className="row">
           <div className="col-6">
             {this.state.hobbies.map(hobby => (
-              <h1>{hobby}</h1>
+              <h1 onClick={() => this.moveTo(hobby, "right")}>{hobby}</h1>
             ))}
           </div>
-          <div className="col-6">rightSide</div>
+          <div className="col-6">
+            {this.state.rightSide.map(hobby => (
+              <h1 onClick={() => this.moveTo(hobby, "left")}>{hobby}</h1>
+            ))}
+          </div>
         </div>
         <div>
           <input
