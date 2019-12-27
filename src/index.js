@@ -12,7 +12,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-6">right side</div>
+        <div className="col-6">
+          {this.state.hobbies.map(hobby => (
+            <h1>{hobby}</h1>
+          ))}
+        </div>
         <div className="col-6">left side</div>
       </div>
     );
