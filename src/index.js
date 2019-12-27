@@ -17,12 +17,14 @@ class App extends React.Component {
     if (side === "right") {
       this.setState({
         hobbies: this.state.hobbies.filter(hobby => hobby !== value),
-        rightSide: [value].concat(this.state.rightSide)
+        rightSide: [value].concat(this.state.rightSide),
+        history: [["Moved to right", value]].concat(this.state.history)
       });
     } else {
       this.setState({
         rightSide: this.state.rightSide.filter(hobby => hobby !== value),
-        hobbies: [value].concat(this.state.hobbies)
+        hobbies: [value].concat(this.state.hobbies),
+        history: [["Moved to left", value]].concat(this.state.history)
       });
     }
   };
