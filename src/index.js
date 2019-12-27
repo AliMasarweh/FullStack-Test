@@ -8,7 +8,8 @@ class App extends React.Component {
       hobbies: ["Drawing", "Writing", "Surfing", "Eating", "Coding"],
       rightSide: [],
       input: "",
-      errors: []
+      errors: [],
+      history: []
     };
   }
 
@@ -63,7 +64,8 @@ class App extends React.Component {
                 });
               } else
                 this.setState({
-                  hobbies: [value].concat(this.state.hobbies)
+                  hobbies: [value].concat(this.state.hobbies),
+                  history: [["Added", value]].concat(this.state.history)
                 });
             }}
           ></input>
@@ -73,6 +75,13 @@ class App extends React.Component {
             </small>
           ))}
         </div>
+        <p>
+          {this.state.history.map((operationAndValue, index) => (
+            <small key={index} className="form-text text-secondary">
+              {`Operation: ${operationAndValue[0]}, Value ${operationAndValue[1]}`}
+            </small>
+          ))}
+        </p>
       </>
     );
   }
