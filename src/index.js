@@ -33,16 +33,16 @@ class App extends React.Component {
             onClick={e => {
               const value = this.state.input;
               const errors = [];
-              if (value) {
+              if (!value) {
                 errors.push("empty input");
               } else if (this.state.hobbies.includes(value)) {
                 errors.push("already contains this hobby!");
               }
-              if (errors)
+              if (errors.length) {
                 this.setState({
                   errors: errors
                 });
-              else
+              } else
                 this.setState({
                   hobbies: [value].concat(this.state.hobbies)
                 });
